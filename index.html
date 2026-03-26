@@ -1,0 +1,362 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy Premium Companion | Product Listing</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #eaeded;
+            margin: 0;
+            padding: 0;
+            color: #0f1111;
+        }
+        .header {
+            background-color: #232f3e;
+            color: white;
+            padding: 12px 20px;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .header-logo {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: #f1f1f1;
+        }
+        .search-bar {
+            width: 50%;
+            padding: 10px;
+            border-radius: 4px;
+            border: none;
+            outline: none;
+            font-size: 1rem;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        .image-section {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+            padding: 20px;
+        }
+        .image-section img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #e7e7e7;
+            border-radius: 4px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .img-instruction {
+            margin-top: 10px;
+            font-size: 0.8rem;
+            color: #555;
+        }
+        .details-section {
+            flex: 1.5;
+            min-width: 350px;
+            padding: 20px;
+        }
+        .product-title {
+            font-size: 1.5rem;
+            font-weight: 500;
+            line-height: 1.3;
+            margin-bottom: 5px;
+            margin-top: 0;
+        }
+        .ratings {
+            color: #007185;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        .ratings-stars {
+            color: #ffa41c;
+        }
+        .price-section {
+            margin: 15px 0;
+        }
+        .price {
+            font-size: 1.8rem;
+            color: #b12704;
+            font-weight: 500;
+        }
+        .currency {
+            font-size: 1rem;
+            vertical-align: top;
+        }
+        .specs {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        .specs th, .specs td {
+            text-align: left;
+            padding: 6px 0;
+        }
+        .specs th {
+            width: 150px;
+            color: #565959;
+            font-weight: normal;
+        }
+        .options {
+            margin-bottom: 20px;
+        }
+        .options h3 {
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+        .options ul {
+            padding-left: 20px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        .buy-box {
+            border: 1px solid #d5d9d9;
+            padding: 18px;
+            border-radius: 8px;
+            background-color: #fff;
+            width: 250px;
+            margin-left: 20px;
+            align-self: flex-start;
+            margin-top: 20px;
+        }
+        .stock-status {
+            color: #007600;
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .delivery-info {
+            font-size: 0.9rem;
+            color: #007185;
+            margin-bottom: 15px;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            text-align: center;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .btn-cart {
+            background-color: #ffd814;
+        }
+        .btn-buy {
+            background-color: #ffa41c;
+        }
+        .btn-cart:hover, .btn-buy:hover {
+            opacity: 0.9;
+        }
+        .secure-transaction {
+            font-size: 0.8rem;
+            color: #565959;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        /* Hidden Prank Element */
+        #prank-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(45deg, #ff00cc, #3333ff);
+            color: white;
+            z-index: 1000;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-family: 'Comic Sans MS', sans-serif;
+            animation: fadeIn 0.5s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        #prank-overlay h1 {
+            color: #fffb00;
+            font-size: 3.5rem;
+            text-transform: uppercase;
+            text-shadow: 3px 3px 0 #ff0055;
+            margin-bottom: 10px;
+            animation: float 2s infinite ease-in-out;
+        }
+        #prank-overlay h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        #prank-overlay p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            padding: 0 20px;
+            line-height: 1.6;
+        }
+        #runaway-btn {
+            position: relative;
+            background-color: #00ffcc;
+            color: #000;
+            font-weight: bold;
+            font-size: 1.1rem;
+            padding: 15px 30px;
+            border-radius: 50px;
+            margin-top: 30px;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 0 15px #00ffcc;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        @media (max-width: 900px) {
+            .container {
+                flex-direction: column;
+            }
+            .buy-box {
+                width: auto;
+                margin-left: 0;
+            }
+            .search-bar {
+                width: 40%;
+            }
+        }
+        @media (max-width: 480px) {
+            .header-logo { font-size: 1.2rem; }
+            .search-bar { display: none; }
+            .product-title { font-size: 1.3rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="header-logo">Store</div>
+        <input type="text" class="search-bar" placeholder="Search for products, brands and more...">
+        <div>🛒 Cart (0)</div>
+    </div>
+
+    <div class="container">
+        <div class="image-section">
+            <!-- PLACE RELEVANT IMAGE HERE -->
+            <!-- Note for you: Change the link inside 'src' below to his picture link -->
+            <img src="img.jpeg" alt="Puppy Bhai">
+            <div class="img-instruction">Roll over image to zoom in</div>
+        </div>
+
+        <div class="details-section">
+            <h1 class="product-title">Puppy Bhai Companion - Highly Energetic, Talkative (Standard Edition)</h1>
+            <div class="ratings">
+                <span class="ratings-stars">★★★★☆</span> 4.2 out of 5 stars | 1,402 ratings | 43 answered questions
+            </div>
+            <hr style="border:0; border-top:1px solid #e7e7e7; margin-bottom:15px;">
+            
+            <div class="price-section">
+                <span class="currency">₹</span><span class="price">150.00</span>
+                <p style="font-size: 0.9rem; color: #565959;">Inclusive of all taxes</p>
+            </div>
+            
+            <table class="specs">
+                <tr>
+                    <th>Product Level</th>
+                    <td>Class 5 Student</td>
+                </tr>
+                <tr>
+                    <th>Brand</th>
+                    <td>Premium Friends Co.</td>
+                </tr>
+                <tr>
+                    <th>Intelligence Status</th>
+                    <td>Questionable / Needs updates</td>
+                </tr>
+                <tr>
+                    <th>Condition</th>
+                    <td>Used (Slightly annoying and loud)</td>
+                </tr>
+            </table>
+
+            <hr style="border:0; border-top:1px solid #e7e7e7; margin: 15px 0;">
+
+            <div class="options">
+                <h3>About this item</h3>
+                <ul>
+                    <li><strong>EXTREMELY ACTIVE:</strong> Highly energetic and requires low maintenance. Will constantly talk.</li>
+                    <li><strong>SOUND EFFECTS:</strong> Known to make random noises and bother everyone in a 5-mile radius.</li>
+                    <li><strong>COMPATIBILITY:</strong> Best suited for keeping as an outdoor companion. Do not keep indoors during study hours.</li>
+                    <li><strong>RETURN POLICY:</strong> Absolutely NO returns. Once you take him, he is your problem forever!</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="buy-box">
+            <div class="stock-status">In Stock.</div>
+            <p class="delivery-info">FREE delivery <strong>Tomorrow by 9 PM</strong>. Order within 10 hrs 30 mins.</p>
+            
+            <p style="font-size: 0.9rem; margin-bottom: 5px;">Deliver to: <strong>Your Neighborhood</strong></p>
+            <p style="font-size: 0.9rem; color:#007185; margin-bottom: 20px;">Ships from: FakeZon Warehouse<br>Sold by: Prankster Enterprises</p>
+            
+            <button class="btn btn-cart" onclick="triggerPrank()">Add to Cart</button>
+            <button class="btn btn-buy" onclick="triggerPrank()">Buy Now</button>
+            
+            <div class="secure-transaction" style="margin-top: 15px;">
+                🔒 Secure transaction
+            </div>
+        </div>
+    </div>
+
+    <div id="prank-overlay">
+        <h1>GOTCHA! 🤣</h1>
+        <h2>You actually clicked to buy Puppy Bhai?!</h2>
+        <p>You have just agreed to keep him forever! The payment has been "deducted" and he will be shipped to your house in a cardboard box within 2 hours! 📦</p>
+        <button id="runaway-btn">Try to cancel order</button>
+    </div>
+
+    <script>
+        function triggerPrank() {
+            // Reveal the prank overlay
+            document.getElementById('prank-overlay').style.display = 'flex';
+        }
+        
+        // Make the cancel button run away so they can't escape the prank
+        const runawayBtn = document.getElementById('runaway-btn');
+        
+        function moveButton() {
+            const maxX = window.innerWidth - runawayBtn.clientWidth - 50;
+            const maxY = window.innerHeight - runawayBtn.clientHeight - 50;
+            
+            const randomX = Math.max(0, Math.floor(Math.random() * maxX));
+            const randomY = Math.max(0, Math.floor(Math.random() * maxY));
+            
+            runawayBtn.style.position = 'fixed';
+            runawayBtn.style.left = randomX + 'px';
+            runawayBtn.style.top = randomY + 'px';
+        }
+
+        runawayBtn.addEventListener('mouseover', moveButton);
+        runawayBtn.addEventListener('touchstart', moveButton);
+        runawayBtn.addEventListener('click', function() {
+            alert('Nice try! But you still have to keep him! 😂');
+            moveButton();
+        });
+    </script>
+</body>
+</html>
