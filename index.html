@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buy Premium Companion | Product Listing</title>
     <style>
+        * {
+            box-sizing: border-box;
+        }
         body {
             font-family: Arial, sans-serif;
             background-color: #eaeded;
@@ -231,19 +234,38 @@
         @media (max-width: 900px) {
             .container {
                 flex-direction: column;
+                padding: 15px;
+            }
+            .image-section, .details-section, .buy-box {
+                min-width: 100%;
+                width: 100%;
+                margin-left: 0;
+                padding: 10px 0;
             }
             .buy-box {
-                width: auto;
-                margin-left: 0;
+                margin-top: 20px;
+                align-self: center;
             }
             .search-bar {
-                width: 40%;
+                width: 60%;
             }
         }
         @media (max-width: 480px) {
-            .header-logo { font-size: 1.2rem; }
-            .search-bar { display: none; }
+            .header {
+                padding: 10px;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+            .header-logo { font-size: 1.2rem; width: 100%; text-align: center; }
+            .search-bar { display: block; width: 100%; order: 3; margin-top: 10px; }
             .product-title { font-size: 1.3rem; }
+            .price { font-size: 1.5rem; }
+            .specs th { width: auto; padding-right: 10px; }
+            #prank-overlay h1 { font-size: 2.5rem; }
+            #prank-overlay h2 { font-size: 1.5rem; }
+            #prank-overlay p { font-size: 1rem; }
+            .btn { font-size: 1rem; padding: 12px; }
         }
     </style>
 </head>
@@ -266,7 +288,7 @@
         <div class="details-section">
             <h1 class="product-title">Puppy Bhai Companion - Highly Energetic, Talkative (Standard Edition)</h1>
             <div class="ratings">
-                <span class="ratings-stars">★★★★☆</span> 4.2 out of 5 stars | 1,402 ratings | 43 answered questions
+                <span class="ratings-stars">★★★★☆</span> 0 out of 5 stars | 1,402 ratings | 43 answered questions
             </div>
             <hr style="border:0; border-top:1px solid #e7e7e7; margin-bottom:15px;">
             
